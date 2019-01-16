@@ -9,7 +9,6 @@ public class Treasurer implements Manager {
 
     int i, j;
     Scanner sc = new Scanner(System.in);
-    Treasurer treasurer = new Treasurer();
     ArrayList<Member> members = Files.reloadMemberFile();
     ArrayList<Treasurer> treasurerMem = Files.reloadTreasurerFile();
 

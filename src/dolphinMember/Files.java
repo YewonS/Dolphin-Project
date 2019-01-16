@@ -39,7 +39,6 @@ public class Files {
             pw.write("name,age,registered class,type of membership,type of swimmer,purpose,swimming discipline,membership fee,tuition fee,coach\n");
             for (int i = 0; i < members.size(); i++) {
                 Member memberFile = members.get(i);
-                System.out.println(memberFile.getName() + " has added to the file.");
                 sb.append(memberFile.getName() + ",");
                 sb.append(memberFile.getBirthday()+",");
                 sb.append(memberFile.getRegisteredClass()+",");
@@ -149,7 +148,7 @@ public class Files {
             pw = new PrintWriter(new File("CompetitionRecords.csv"));
             StringBuilder sb = new StringBuilder();
 
-            pw.write("name,time,competition result\n");
+            pw.write("name,discipline,time,competition result\n");
             for(int i = 0; i < competitionRecords.size(); i++){
                 CompetitionRecords compRecordFile = competitionRecords.get(i);
 
@@ -319,23 +318,27 @@ public class Files {
         return competitionRecords;
     }
 
-    public static void loadTrainingInfo(){
+    //todo: fix this
+    public static void loadTrainingInfo(ArrayList<TrainingRecords> trRecords){
         //get the names from the "member" arraylist and store them with default values inside the trainingRecords arraylist and then store them in the file.
         int i, j;
         for(i=0; i<member.size(); i++){
-            for(j=0; j<trainingRecords.size(); j++){
-                if((member.get(i).getName()).equals(trainingRecords.get(j).getName())){
-                    continue;
-                } else {
+//            for(j=0; j<trRecords.size(); j++){
+//                if((member.get(i).getName()).equals(trRecords.get(j).getName())){
+//                    continue;
+//                } else {
                     TrainingRecords trainingRecords1 = new TrainingRecords(member.get(i).getName(), 0, LocalDate.now(), 0);
+                    System.out.println("New member saved");
                     trainingRecords.add(trainingRecords1);
-                }
-            }
+//                }
+//            }
         }
 
         Files.writeTrainingRecordsToFile(trainingRecords);
+        System.out.println("Training records saved to file.");
     }
 
+    //todo: fix this
     public static void loadCompetitionInfo(){
         //get the names from the "member" arraylist and store them with the fees and boolean false values as default inside the treasureMem arraylist and then store them in the file.
 

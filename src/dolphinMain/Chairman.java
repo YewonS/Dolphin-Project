@@ -122,10 +122,11 @@ public class Chairman implements Manager{
 
         //modify the certain information
         System.out.println("Choose which option to modify: ");
-        System.out.println("1. Name \n2. Birthday \n3. class \n4. activity \n5. coach \n6. training records \n7. competition records");
+        System.out.println("1. Name \n2. Birthday \n3. class \n4. activity \n5. training records \n6. competition records");
         int modifyOption = sc.nextInt();
+        sc.nextLine();
 
-        if(modifyOption < 0 || modifyOption > 5){
+        if(modifyOption < 0 || modifyOption > 7){
             System.out.println("Invalid option. Please try again.");
             modifyMember();
         }
@@ -135,8 +136,10 @@ public class Chairman implements Manager{
             switch (modifyOption){
                 case 1:
                     System.out.println("Type in the name: ");
+                    sc.nextLine();
                     member.get(j).setName(sc.nextLine());
                     System.out.println("The name of the member has successfully modified.");
+                    break;
 
                 case 2:
                     System.out.println("Type in the birthday in the format of yyyy-mm-dd");
@@ -144,17 +147,24 @@ public class Chairman implements Manager{
                     LocalDate newBirthday = LocalDate.parse(newBday);
                     member.get(j).setBirthday(newBirthday);
                     System.out.println("The birthday of the member has successfully modified.");
+                    break;
+
                 case 3:
                     System.out.println("Type in the class: (Beginner, Intermediate, Advanced, and in case of no classes registered, type in \"none\")");
                     member.get(j).setRegisteredClass(sc.nextLine().toLowerCase());
                     System.out.println("The registered class of the member has successfully modified.");
+                    break;
+
                 case 4:
                     int[] modifiedActivity = processActivity(member.get(j).getBirthday());
                     member.get(j).setActivity(modifiedActivity);
                     System.out.println("The types of activity of the member has successfully modified.");
+                    break;
+
                 case 5:
+                    //todo: fix this
                     //write training records and store them in the file
-                    Files.loadTrainingInfo();
+                    Files.loadTrainingInfo(trainingRecords);
                     System.out.println("Type in the training records: ");
                     System.out.println("Type in the date in the format of 'yyyy-mm-dd' : ");
                     String date = sc.nextLine();
@@ -164,7 +174,10 @@ public class Chairman implements Manager{
                     trainingRecords.get(t).setDate(date1);
                     trainingRecords.get(t).setTrainingResult(ranking);
                     System.out.println("Training records has successfully stored.");
+                    break;
+
                 case 6:
+                    //todo: fix this
                     //write competition records and store them in the file
                     //might also need loadInfo() method for both training records and competition records, to store the initial info and modified info
                     Files.loadCompetitionInfo();
@@ -176,6 +189,7 @@ public class Chairman implements Manager{
                     competitionRecords.get(c).setTime(time);
                     competitionRecords.get(c).setCompetitionResult(ranking1);
                     System.out.println("Competition records has successfully stored.");
+                    break;
             }
 
             Files.writeMemberToFile(member);

@@ -8,7 +8,7 @@ public class Member {
     private String name;
     private LocalDate birthday;
     private String registeredClass;
-    private int[] activity = new int[3];
+    private int[] activity = new int[4];
     private double membershipFee;
     private double tuitionFee;
     private Coach coach;
@@ -89,6 +89,10 @@ public class Member {
     public void setActivity3(int[] activity) {
         this.activity[2] = activity[2];
     }
+
+    public int getActivity4() { return activity[3]; }
+
+    public void setActivity4(int[] activity) { this.activity[3] = activity[3]; }
 
     public double getMembershipFee() {
         return membershipFee;

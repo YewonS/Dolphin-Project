@@ -89,8 +89,6 @@ public class Chairman implements Manager{
 
     public void modifyMember(){
 
-        int[] newActivity = new int[3];
-
         System.out.println();
         System.out.println("Choose the member to modify: (type in the name)");
 
@@ -390,8 +388,10 @@ public class Chairman implements Manager{
             activity[2] = 0;
         }
 
-        System.out.println("What is the swimming discipline: (freestyle, backstroke, breaststroke, butterfly, medley)");
-
+        System.out.println("What is the swimming discipline: ");
+        System.out.println("(type in 1 for freestyle, 2 for backstroke, 3 for breaststroke, 4 for butterfly, 5 for medley)");
+        int discipline = sc.nextInt();
+        activity[3] = discipline;
 
         Files.writeCoachToFile(coachList);
         return activity;

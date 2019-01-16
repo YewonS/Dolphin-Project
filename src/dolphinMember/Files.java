@@ -13,7 +13,7 @@ public class Files {
     static ArrayList<Treasurer> treasurer = new ArrayList<>();
     static ArrayList<TrainingRecords> trainingRecords = new ArrayList<>();
     static ArrayList<CompetitionRecords> competitionRecords = new ArrayList<>();
-    static int activity[] = new int[3];
+    static int activity[] = new int[4];
 
     public static void createFile(){
         try {
@@ -36,7 +36,7 @@ public class Files {
             PrintWriter pw = new PrintWriter(new File("Members.csv"));
             StringBuilder sb = new StringBuilder();
 
-            pw.write("name,age,registered class,type of membership,type of swimmer,purpose,membership fee,tuition fee,coach\n");
+            pw.write("name,age,registered class,type of membership,type of swimmer,purpose,swimming discipline,membership fee,tuition fee,coach\n");
             for (int i = 0; i < members.size(); i++) {
                 Member memberFile = members.get(i);
                 System.out.println(memberFile.getName() + " has added to the file.");
@@ -46,6 +46,7 @@ public class Files {
                 sb.append(memberFile.getActivity1()+",");
                 sb.append(memberFile.getActivity2()+",");
                 sb.append(memberFile.getActivity3()+",");
+                sb.append(memberFile.getActivity4()+",");
                 sb.append(memberFile.getMembershipFee()+",");
                 sb.append(memberFile.getTuitionFee()+",");
                 sb.append(memberFile.getCoach().getName());
@@ -122,11 +123,12 @@ public class Files {
             pw = new PrintWriter(new File("TrainingRecords.csv"));
             StringBuilder sb = new StringBuilder();
 
-            pw.write("name,date,training result\n");
+            pw.write("name,discipline,date,training result\n");
             for(int i = 0; i < trainingRecords.size(); i++){
                 TrainingRecords trRecordFile = trainingRecords.get(i);
 
                 sb.append(trRecordFile.getName() + ",");
+                sb.append(trRecordFile.getDiscipline() + ",");
                 sb.append(trRecordFile.getDate() + ",");
                 sb.append(trRecordFile.getTrainingResult());
                 sb.append('\n');
@@ -152,6 +154,7 @@ public class Files {
                 CompetitionRecords compRecordFile = competitionRecords.get(i);
 
                 sb.append(compRecordFile.getName()+ ",");
+                sb.append(compRecordFile.getDiscipline()+ ",");
                 sb.append(compRecordFile.getTime()+ ",");
                 sb.append(compRecordFile.getCompetitionResult());
                 sb.append('\n');
@@ -202,9 +205,10 @@ public class Files {
                 activity[0] = Integer.parseInt(reloadFile[3]);
                 activity[1] = Integer.parseInt(reloadFile[4]);
                 activity[2] = Integer.parseInt(reloadFile[5]);
-                double membershipFee = Double.parseDouble(reloadFile[6]);
-                double tuitionFee = Double.parseDouble(reloadFile[7]);
-                String coachName = reloadFile[8];
+                activity[3] = Integer.parseInt(reloadFile[6]);
+                double membershipFee = Double.parseDouble(reloadFile[7]);
+                double tuitionFee = Double.parseDouble(reloadFile[8]);
+                String coachName = reloadFile[9];
                 Coach coach1 = matchingCoach(coachName);
 
                 member.add(new Member(name, birthday, registeredClass, activity, membershipFee, tuitionFee, coach1));
@@ -279,7 +283,7 @@ public class Files {
             while ((line = br.readLine()) != null) {
 
                 String[] reloadTrainingRecords = line.split(",");
-                trainingRecords.add(new TrainingRecords(reloadTrainingRecords[0], LocalDate.parse(reloadTrainingRecords[1]), Integer.parseInt(reloadTrainingRecords[2])));
+                trainingRecords.add(new TrainingRecords(reloadTrainingRecords[0], Integer.parseInt(reloadTrainingRecords[1]), LocalDate.parse(reloadTrainingRecords[2]), Integer.parseInt(reloadTrainingRecords[3])));
 
             }
         } catch(FileNotFoundException e){
@@ -303,7 +307,7 @@ public class Files {
             while ((line = br.readLine()) != null) {
 
                 String[] reloadCompetitionRecords = line.split(",");
-                competitionRecords.add(new CompetitionRecords(reloadCompetitionRecords[0], reloadCompetitionRecords[1], Integer.parseInt(reloadCompetitionRecords[2])));
+                competitionRecords.add(new CompetitionRecords(reloadCompetitionRecords[0], Integer.parseInt(reloadCompetitionRecords[1]), reloadCompetitionRecords[2], Integer.parseInt(reloadCompetitionRecords[3])));
 
             }
         } catch(FileNotFoundException e){
@@ -323,7 +327,7 @@ public class Files {
                 if((member.get(i).getName()).equals(trainingRecords.get(j).getName())){
                     continue;
                 } else {
-                    TrainingRecords trainingRecords1 = new TrainingRecords(member.get(i).getName(), LocalDate.now(), 0);
+                    TrainingRecords trainingRecords1 = new TrainingRecords(member.get(i).getName(), 0, LocalDate.now(), 0);
                     trainingRecords.add(trainingRecords1);
                 }
             }
@@ -341,7 +345,7 @@ public class Files {
                 if((member.get(i).getName()).equals(competitionRecords.get(j).getName())){
                     continue;
                 } else {
-                    CompetitionRecords competitionRecords1 = new CompetitionRecords(member.get(i).getName(), "00:00", 0);
+                    CompetitionRecords competitionRecords1 = new CompetitionRecords(member.get(i).getName(), 0, "00:00", 0);
                     competitionRecords.add(competitionRecords1);
                 }
             }

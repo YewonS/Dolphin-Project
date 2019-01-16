@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Records {
 
     String name;
+    int discipline;
     LocalDate date;
     String time;
     int trainingResult;
@@ -20,6 +21,10 @@ public class Records {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getDiscipline() { return discipline; }
+
+    public void setDiscipline(int discipline) { this.discipline = discipline; }
 
     public LocalDate getDate() {
         return date;

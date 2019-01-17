@@ -1,4 +1,6 @@
 name,age,registered class,type of membership,type of swimmer,purpose,swimming discipline,membership fee,tuition fee,coach
 Blair,1991-02-22,Advanced,1,2,2,1,1600.0,300.0,Gustav
 Elsa,2001-01-15,Beginner,1,2,2,1,1600.0,200.0,Max
-Anna,2011-02-02,Intermediate,1,1,2,4,1000.0,250.0,Kevin
+Anna,2011-02-02,Intermediate,1,2,2,1,1000.0,250.0,Kevin
+Lolla,2000-01-01,Intermediate,1,2,2,1,1600.0,250.0,Max
+Grey,1995-01-15,Intermediate,1,2,2,1,1600.0,250.0,Max

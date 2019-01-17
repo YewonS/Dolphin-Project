@@ -98,7 +98,7 @@ public class Files {
 
                 sb.append(treasurerFile.getName() + ",");
                 sb.append(treasurerFile.getMembershipFee() + ",");
-                sb.append(treasurerFile.isMembPaid());
+                sb.append(treasurerFile.isMembPaid() + ",");
                 sb.append(treasurerFile.getTuitionFee() + ",");
                 sb.append(treasurerFile.isTuitPaid());
                 sb.append('\n');
@@ -257,8 +257,8 @@ public class Files {
             br.readLine();
             while ((line = br.readLine()) != null) {
 
-                String[] reloadTreasurerFile = line.split(",");
-                treasurer.add(new Treasurer(reloadTreasurerFile[0], Double.parseDouble(reloadTreasurerFile[1]), Boolean.parseBoolean(reloadTreasurerFile[2]), Double.parseDouble(reloadTreasurerFile[3]), Boolean.parseBoolean(reloadTreasurerFile[4])));
+                String[] reloadTreasurer = line.split(",");
+                treasurer.add(new Treasurer(reloadTreasurer[0], Double.parseDouble(reloadTreasurer[1]), Boolean.parseBoolean(reloadTreasurer[2]), Double.parseDouble(reloadTreasurer[3]), Boolean.parseBoolean(reloadTreasurer[4])));
 
             }
         } catch(FileNotFoundException e){
@@ -318,41 +318,49 @@ public class Files {
         return competitionRecords;
     }
 
-    //todo: fix this
     public static void loadTrainingInfo(ArrayList<TrainingRecords> trRecords){
         //get the names from the "member" arraylist and store them with default values inside the trainingRecords arraylist and then store them in the file.
-        int i, j;
+        int i;
         for(i=0; i<member.size(); i++){
-//            for(j=0; j<trRecords.size(); j++){
-//                if((member.get(i).getName()).equals(trRecords.get(j).getName())){
-//                    continue;
-//                } else {
+                boolean found = false;
+                for(TrainingRecords trRecord: trRecords){
+                    //System.out.println("compairing"+trRecord.getName()+" to "+member.get(i).getName());
+                    if(trRecord.getName().equals(member.get(i).getName())){
+                    //    System.out.println("match found");
+                        found = true;
+                    }
+                }
+                if(found){
+                    continue;
+                } else {
                     TrainingRecords trainingRecords1 = new TrainingRecords(member.get(i).getName(), 0, LocalDate.now(), 0);
-                    System.out.println("New member saved");
+                    //System.out.println("New member saved.");
                     trainingRecords.add(trainingRecords1);
-//                }
-//            }
+                }
         }
 
         Files.writeTrainingRecordsToFile(trainingRecords);
-        System.out.println("Training records saved to file.");
+        //System.out.println("Training records saved to file.");
     }
 
-    //todo: fix this
-    public static void loadCompetitionInfo(){
+    public static void loadCompetitionInfo(ArrayList<CompetitionRecords> compRecords){
         //get the names from the "member" arraylist and store them with the fees and boolean false values as default inside the treasureMem arraylist and then store them in the file.
 
-        int i, j;
+        int i;
         for(i=0; i<member.size(); i++){
-            for(j=0; j<competitionRecords.size(); j++){
-                if((member.get(i).getName()).equals(competitionRecords.get(j).getName())){
-                    continue;
-                } else {
-                    CompetitionRecords competitionRecords1 = new CompetitionRecords(member.get(i).getName(), 0, "00:00", 0);
-                    competitionRecords.add(competitionRecords1);
+            boolean found = false;
+            for(CompetitionRecords competitionRecord: compRecords){
+                if(competitionRecord.getName().equals(member.get(i).getName())){
+                    found = true;
                 }
             }
-        }
+            if(found){
+                continue;
+            } else {
+                CompetitionRecords competitionRecords1 = new CompetitionRecords(member.get(i).getName(), 0, "00:00", 0);
+                competitionRecords.add(competitionRecords1);
+                }
+            }
 
         Files.writeCompetitionRecordsToFile(competitionRecords);
     }

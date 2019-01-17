@@ -180,7 +180,7 @@ public class Chairman implements Manager{
                     //todo: fix this
                     //write competition records and store them in the file
                     //might also need loadInfo() method for both training records and competition records, to store the initial info and modified info
-                    Files.loadCompetitionInfo();
+                    Files.loadCompetitionInfo(competitionRecords);
                     System.out.println("Type in the competition records: ");
                     System.out.println("Type in the time in the format of 'mm:ss' : ");
                     String time = sc.nextLine();

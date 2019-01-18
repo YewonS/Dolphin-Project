@@ -9,9 +9,26 @@ public class MainScreen {
     public static void homeScreen(){
 
         System.out.println();
-        System.out.println("-----------------------------------------------------");
-        System.out.println(" Welcome to Dolphin Swimming Club Management System. ");
-        System.out.println("-----------------------------------------------------");
+        System.out.print(
+         " \n" +
+                 "                                   __   \n" +
+                 "                               _.-~  )  \n" +
+                 "                    _..--~~~~,'   ,-/     _  \n" +
+                 "                 .-'. . . .'   ,-','    ,' ) \n" +
+                 "              ,'. . .  _  ,--~,-'  _..-' ,'  \n" +
+                 "           , '. . . . (@) '---~~~~    ,'     \n" +
+                 "          /. . . .   '~~          ,-'         \n" +
+                 "         /. . . . .            ,-'           \n" +
+                 "        ; . . . .  - .       ,'      \n" +
+                 "       : . . . .       _    /       \n" +
+                 "       . . . . .          `-.:       \n" +
+                 "      . . . ./  - .           )       \n" +
+                 "      .  . .|   _____..---.._/ _____   \n" +
+                 "     ~---~~~~----~~~~             ~~  \n"
+        );
+        System.out.println("----------------------------------------------------------");
+        System.out.println("    Welcome to Dolphin Swimming Club Management System. ");
+        System.out.println("----------------------------------------------------------");
 
         System.out.println();
         System.out.println("Please type in your username and password to log in.");

@@ -23,6 +23,7 @@ public class Chairman implements Manager{
 
     @Override
     public void selectedOption(int option) {
+
         switch(option){
             case 1:
                 addNewMember();
@@ -156,8 +157,18 @@ public class Chairman implements Manager{
                     break;
 
                 case 4:
+                    Coach currentCoach = member.get(j).getCoach();
+                    String coachName = currentCoach.getName();
+                    for(Coach coach : coachList){
+                        if(coach.getName().equals(coachName)){
+                            int newNumOfSwimmers = coach.getNumOfSwimmers() - 1;
+                            coach.setNumOfSwimmers(newNumOfSwimmers);
+                        }
+                    }
+
                     int[] modifiedActivity = processActivity(member.get(j).getBirthday());
                     member.get(j).setActivity(modifiedActivity);
+                    System.out.println("debug line: chairman switch case: " + member.get(j).getActivity4());
                     System.out.println("The types of activity of the member has successfully modified.");
                     break;
 
@@ -190,13 +201,16 @@ public class Chairman implements Manager{
                     break;
             }
 
+
+            System.out.println("debug line: chairman before storing file: " + member.get(j).getActivity4());
+            Files.writeMemberToFile(member);
             TreasurerWork.modifyInfo(member.get(j));
             Files.modifyTrainingInfo(member.get(t));
             Files.modifyCompetitionInfo(member.get(c));
-            System.out.println(member.get(j).getActivity4());
-            Files.writeMemberToFile(member);
             Files.writeTrainingRecordsToFile(trainingRecords);
             Files.writeCompetitionRecordsToFile(competitionRecords);
+
+
 
         } catch(InputMismatchException e){
             e.printStackTrace();
@@ -395,9 +409,6 @@ public class Chairman implements Manager{
                     assignedCoach = coachList.get(i);
                     //store the changes in the information
                     assignedCoach = new Coach(assignedCoach.getName(), assignedCoach.getLevel(), assignedCoach.getNumOfSwimmers()+1);
-
-                    //todo: also -1 for the current coach and revise coach Gustav, Max and Matilda on code, manually
-
                     coachList.set(i, assignedCoach);
                     //write to the coach file so that it reflects the changes in number of swimmers
                 }

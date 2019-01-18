@@ -162,7 +162,6 @@ public class Chairman implements Manager{
                     break;
 
                 case 5:
-                    //todo: fix this
                     //write training records and store them in the file
                     Files.loadTrainingInfo(trainingRecords);
                     System.out.println("Type in the training records: ");
@@ -177,7 +176,6 @@ public class Chairman implements Manager{
                     break;
 
                 case 6:
-                    //todo: fix this
                     //write competition records and store them in the file
                     //might also need loadInfo() method for both training records and competition records, to store the initial info and modified info
                     Files.loadCompetitionInfo(competitionRecords);
@@ -192,6 +190,10 @@ public class Chairman implements Manager{
                     break;
             }
 
+            TreasurerWork.modifyInfo(member.get(j));
+            Files.modifyTrainingInfo(member.get(t));
+            Files.modifyCompetitionInfo(member.get(c));
+            System.out.println(member.get(j).getActivity4());
             Files.writeMemberToFile(member);
             Files.writeTrainingRecordsToFile(trainingRecords);
             Files.writeCompetitionRecordsToFile(competitionRecords);
@@ -393,6 +395,9 @@ public class Chairman implements Manager{
                     assignedCoach = coachList.get(i);
                     //store the changes in the information
                     assignedCoach = new Coach(assignedCoach.getName(), assignedCoach.getLevel(), assignedCoach.getNumOfSwimmers()+1);
+
+                    //todo: also -1 for the current coach and revise coach Gustav, Max and Matilda on code, manually
+
                     coachList.set(i, assignedCoach);
                     //write to the coach file so that it reflects the changes in number of swimmers
                 }

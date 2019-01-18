@@ -35,6 +35,18 @@ public class TreasurerWork {
 
     }
 
+    public static void modifyInfo(Member memberToModify){
+        for(Treasurer treasurer : treasurerMem){
+            if(treasurer.getName().equals(memberToModify.getName())){
+                treasurer.setMembershipFee(memberToModify.getMembershipFee());
+                treasurer.setTuitionFee(memberToModify.getTuitionFee());
+            }
+        }
+
+        System.out.println("Modified information saved to treasurer file.");
+        Files.writeTreasurerFile(treasurerMem);
+    }
+
     public static void addPayments(){
         //reload member file and then get the name, membership fees, and tuition fees. store then in the treasureMem arraylist with the boolean value.
         //also, create treasurer file and store treasureMem arraylist there, in the File class.
@@ -72,7 +84,7 @@ public class TreasurerWork {
             } else if (option == 2){
 
                 for (Treasurer treasurer : treasurerMem) {
-                    if (treasurer.equals(name)) {
+                    if(treasurer.getName().equals(name)){
                         System.out.println("The tuition fee of the member is " + treasurer.getTuitionFee());
                         System.out.println("Type y if the member paid the tuition fee, type n if he/she did not.");
                         String yn = sc.nextLine();
@@ -85,6 +97,9 @@ public class TreasurerWork {
                         }
                     }
                 }
+            } else {
+                System.out.println("Invalid input. Try again.");
+                addPayments();
             }
 
             Files.writeTreasurerFile(treasurerMem);
@@ -94,43 +109,47 @@ public class TreasurerWork {
             addPayments();
         }
     }
-//todo: from here, edit it
+
     public static void cancelPayment(){
         //get the arraylist and find the name, and then cancel it. Store the modified information.
-
-        System.out.println();
-        System.out.println("Type in the name of the member to cancel payment: ");
-        for(i=0; i<members.size(); i++){
-            System.out.print((members.get(i).getName()) + " ");
-        }
-
-        String name = sc.nextLine();
-
-        System.out.println("Choose which payment to cancel: (type in 'm' for membership fee, type in 't' for tuition fee)");
-        String option = sc.nextLine().toLowerCase();
-        if(option.equals('m')){
-            for(i=0; i<members.size(); i++){
-                if((treasurerMem.get(i).getName()).equals(name)){
-                    treasurerMem.get(i).setMembPaid(false);
-                }
+        try {
+            System.out.println();
+            System.out.println("Type in the name of the member to cancel payment: ");
+            for (Member member : members) {
+                System.out.print(member.getName() + " ");
             }
 
-            System.out.println("Membership payment of the member has successfully canceled.");
+            String name = sc.nextLine();
+            sc.nextLine();
 
-        } else if(option.equals('t')){
-            for(i=0; i<members.size(); i++){
-                if((treasurerMem.get(i).getName()).equals(name)){
-                    treasurerMem.get(i).setTuitPaid(false);
+            System.out.println("Choose which payment to cancel: (type in '1' for membership fee, type in '2' for tuition fee)");
+            int option = sc.nextInt();
+            if (option == 1) {
+                for (Treasurer treasurer : treasurerMem) {
+                    if (treasurer.getName().equals(name)) {
+                        treasurer.setMembPaid(false);
+                    }
                 }
+
+                System.out.println("Membership payment of the member has successfully canceled.");
+
+            } else if (option == 2) {
+                for (Treasurer treasurer1 : treasurerMem){
+                    if (treasurer1.getName().equals(name)) {
+                        treasurer1.setTuitPaid(false);
+                }
+
+                System.out.println("Tuition payment of the member has successfully canceled.");
+
+                }
+            } else {
+                System.out.println("Invalid input. Please try again.");
+                cancelPayment();
             }
-
-            System.out.println("Tuition payment of the member has successfully canceled.");
-
-        } else {
-            System.out.println("Invalid input. Please try again.");
+        } catch (InputMismatchException e){
+            e.printStackTrace();
             cancelPayment();
         }
-
         Files.writeTreasurerFile(treasurerMem);
     }
 
@@ -138,19 +157,19 @@ public class TreasurerWork {
         //get the boolean value from the arraylist and then display them.
         try {
             System.out.println();
-            System.out.println("Choose which type of payment to view: (type in 'm' for membership fee, type in 't' for tuition fee)");
+            System.out.println("Choose which type of payment to view: (type in '1' for membership fee, type in '2' for tuition fee)");
 
-            String option = sc.nextLine().toLowerCase();
-            if (option.equals("m")) {
-                for (i = 0; i < treasurerMem.size(); i++) {
-                    if (treasurerMem.get(i).isMembPaid() != true) {
-                        System.out.println(treasurerMem.get(i).getName() + " ");
+            int option = sc.nextInt();
+            if (option == 1) {
+                for (Treasurer treasurer2 : treasurerMem) {
+                    if (!treasurer2.isMembPaid()) {
+                        System.out.println(treasurer2.getName() + " ");
                     }
                 }
-            } else if (option.equals("t")) {
-                for (i = 0; i < treasurerMem.size(); i++) {
-                    if (treasurerMem.get(i).isTuitPaid() != true) {
-                        System.out.println(treasurerMem.get(i).getName() + " ");
+            } else if (option == 2) {
+                for (Treasurer treasurer2 : treasurerMem) {
+                    if (!treasurer2.isTuitPaid()) {
+                        System.out.println(treasurer2.getName() + " ");
                     }
                 }
             } else {

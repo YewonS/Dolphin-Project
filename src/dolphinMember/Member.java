@@ -70,9 +70,7 @@ public class Member {
         return activity[0];
     }
 
-    public void setActivity1(int[] activity) {
-        this.activity[0] = activity[0];
-    }
+    public void setActivity1(int[] activity) { this.activity[0] = activity[0]; }
 
     public int getActivity2() {
         return activity[1];

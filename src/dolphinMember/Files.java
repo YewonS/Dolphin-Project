@@ -39,6 +39,7 @@ public class Files {
             pw.write("name,age,registered class,type of membership,type of swimmer,purpose,swimming discipline,membership fee,tuition fee,coach\n");
             for (int i = 0; i < members.size(); i++) {
                 Member memberFile = members.get(i);
+                System.out.println("writing to member file"+memberFile.getActivity4());
                 sb.append(memberFile.getName() + ",");
                 sb.append(memberFile.getBirthday()+",");
                 sb.append(memberFile.getRegisteredClass()+",");
@@ -333,7 +334,7 @@ public class Files {
                 if(found){
                     continue;
                 } else {
-                    TrainingRecords trainingRecords1 = new TrainingRecords(member.get(i).getName(), 0, LocalDate.now(), 0);
+                    TrainingRecords trainingRecords1 = new TrainingRecords(member.get(i).getName(), member.get(i).getActivity4(), LocalDate.now(), 0);
                     //System.out.println("New member saved.");
                     trainingRecords.add(trainingRecords1);
                 }
@@ -341,6 +342,31 @@ public class Files {
 
         Files.writeTrainingRecordsToFile(trainingRecords);
         //System.out.println("Training records saved to file.");
+    }
+
+    public static void modifyTrainingInfo(Member memberToModify){
+        for(TrainingRecords trRecord : trainingRecords){
+            if(trRecord.getName().equals(memberToModify.getName())){
+                trRecord.setName(memberToModify.getName());
+                trRecord.setDiscipline(memberToModify.getActivity4());
+
+            }
+        }
+
+        System.out.println("Modified information saved to Training information file.");
+        Files.writeTrainingRecordsToFile(trainingRecords);
+    }
+
+    public static void modifyCompetitionInfo(Member memberToModify){
+        for(CompetitionRecords comRecord : competitionRecords){
+            if(comRecord.getName().equals(memberToModify.getName())){
+                comRecord.setName(memberToModify.getName());
+                comRecord.setDiscipline(memberToModify.getActivity4());
+            }
+        }
+
+        System.out.println("Modified information saved to Competition information file.");
+        Files.writeCompetitionRecordsToFile(competitionRecords);
     }
 
     public static void loadCompetitionInfo(ArrayList<CompetitionRecords> compRecords){
@@ -357,7 +383,7 @@ public class Files {
             if(found){
                 continue;
             } else {
-                CompetitionRecords competitionRecords1 = new CompetitionRecords(member.get(i).getName(), 0, "00:00", 0);
+                CompetitionRecords competitionRecords1 = new CompetitionRecords(member.get(i).getName(), member.get(i).getActivity4(), "00:00", 0);
                 competitionRecords.add(competitionRecords1);
                 }
             }

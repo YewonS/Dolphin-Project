@@ -1,12 +1,14 @@
 package dolphinMember;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Records {
 
     String name;
     int discipline;
     LocalDate date;
+    LocalTime time1;
     String time;
     int trainingResult;
     int competitionResult;
@@ -41,6 +43,10 @@ public class Records {
     public void setTime(String time) {
         this.time = time;
     }
+
+    public LocalTime getTime1() { return time1; }
+
+    public void setTime1(LocalTime time1) { this.time1 = time1; }
 
     public int getTrainingResult() {
         return trainingResult;

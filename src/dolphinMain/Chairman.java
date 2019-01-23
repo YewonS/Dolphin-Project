@@ -158,14 +158,14 @@ public class Chairman implements Manager{
                     break;
 
                 case 4:
-                    Coach currentCoach = member.get(j).getCoach();
-                    String coachName = currentCoach.getName();
-                    for(Coach coach : coachList){
-                        if(coach.getName().equals(coachName)){
-                            int newNumOfSwimmers = coach.getNumOfSwimmers() - 1;
-                            coach.setNumOfSwimmers(newNumOfSwimmers);
-                        }
-                    }
+//                    Coach currentCoach = member.get(j).getCoach();
+//                    String coachName = currentCoach.getName();
+//                    for(Coach coach : coachList){
+//                        if(coach.getName().equals(coachName)){
+//                            int newNumOfSwimmers = coach.getNumOfSwimmers() - 1;
+//                            coach.setNumOfSwimmers(newNumOfSwimmers);
+//                        }
+//                    }
 
                     int[] modifiedActivity = processActivity(member.get(j).getBirthday());
                     member.get(j).setActivity(modifiedActivity);
@@ -403,7 +403,11 @@ public class Chairman implements Manager{
                     coach.availableCoach("senior");
                 }
 
-                String coachName = sc.next();
+                sc.nextLine();
+                String coachName = sc.nextLine();
+
+                changeNumOfSwimmers();
+
                 for (i = 0; i < coachList.size(); i++) {
                     if (((coachList.get(i)).getName()).equals(coachName)) {
                         assignedCoach = coachList.get(i);
@@ -411,6 +415,12 @@ public class Chairman implements Manager{
                         assignedCoach = new Coach(assignedCoach.getName(), assignedCoach.getLevel(), assignedCoach.getNumOfSwimmers()+1);
                         coachList.set(i, assignedCoach);
                         //write to the coach file so that it reflects the changes in number of swimmers
+                    }
+                }
+
+                for(Member member: member){
+                    if(member.getBirthday() == birthday){
+                        member.setCoach(assignedCoach);
                     }
                 }
             }
@@ -429,23 +439,27 @@ public class Chairman implements Manager{
         return activity;
     }
 
-    public void changeNumOfSwimmers(){
+    public ArrayList<Coach> changeNumOfSwimmers(){
         //hashmap
         //get the names, count, and then save it, instead of all the +1, -1 thingy
 
         HashMap<String, Integer> coachCount = new HashMap<>();
         int count = 0;
 
-        for(i=0; i<coachList.size(); i++){
-            String coachName = coachList.get(i).getName();
+        for(Coach coaches : coachList){
+            String coachName = coaches.getName();
             for(Member members : member){
                 if(members.getCoach().getName().equals(coachName)){
                     count ++;
                     coachCount.put(coachName, count);
                 }
             }
+
+            coaches.setNumOfSwimmers(count);
+            count = 0;
         }
 
+        return coachList;
     }
 
 }

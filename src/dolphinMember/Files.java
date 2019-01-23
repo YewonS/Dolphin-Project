@@ -206,6 +206,7 @@ public class Files {
                 activity[1] = Integer.parseInt(reloadFile[4]);
                 activity[2] = Integer.parseInt(reloadFile[5]);
                 activity[3] = Integer.parseInt(reloadFile[6]);
+                System.out.println(activity[3]);
                 double membershipFee = Double.parseDouble(reloadFile[7]);
                 double tuitionFee = Double.parseDouble(reloadFile[8]);
                 String coachName = reloadFile[9];

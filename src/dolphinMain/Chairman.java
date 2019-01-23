@@ -2,6 +2,7 @@ package dolphinMain;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -401,18 +402,19 @@ public class Chairman implements Manager{
                     System.out.println("Choose the coach for the member: ");
                     coach.availableCoach("senior");
                 }
-            }
 
-            String coachName = sc.next();
-            for (i = 0; i < coachList.size(); i++) {
-                if (((coachList.get(i)).getName()).equals(coachName)) {
-                    assignedCoach = coachList.get(i);
-                    //store the changes in the information
-                    assignedCoach = new Coach(assignedCoach.getName(), assignedCoach.getLevel(), assignedCoach.getNumOfSwimmers()+1);
-                    coachList.set(i, assignedCoach);
-                    //write to the coach file so that it reflects the changes in number of swimmers
+                String coachName = sc.next();
+                for (i = 0; i < coachList.size(); i++) {
+                    if (((coachList.get(i)).getName()).equals(coachName)) {
+                        assignedCoach = coachList.get(i);
+                        //store the changes in the information
+                        assignedCoach = new Coach(assignedCoach.getName(), assignedCoach.getLevel(), assignedCoach.getNumOfSwimmers()+1);
+                        coachList.set(i, assignedCoach);
+                        //write to the coach file so that it reflects the changes in number of swimmers
+                    }
                 }
             }
+
         } else{
             activity[1] = 0;
             activity[2] = 0;
@@ -425,6 +427,25 @@ public class Chairman implements Manager{
 
         Files.writeCoachToFile(coachList);
         return activity;
+    }
+
+    public void changeNumOfSwimmers(){
+        //hashmap
+        //get the names, count, and then save it, instead of all the +1, -1 thingy
+
+        HashMap<String, Integer> coachCount = new HashMap<>();
+        int count = 0;
+
+        for(i=0; i<coachList.size(); i++){
+            String coachName = coachList.get(i).getName();
+            for(Member members : member){
+                if(members.getCoach().getName().equals(coachName)){
+                    count ++;
+                    coachCount.put(coachName, count);
+                }
+            }
+        }
+
     }
 
 }

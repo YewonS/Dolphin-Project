@@ -158,15 +158,6 @@ public class Chairman implements Manager{
                     break;
 
                 case 4:
-//                    Coach currentCoach = member.get(j).getCoach();
-//                    String coachName = currentCoach.getName();
-//                    for(Coach coach : coachList){
-//                        if(coach.getName().equals(coachName)){
-//                            int newNumOfSwimmers = coach.getNumOfSwimmers() - 1;
-//                            coach.setNumOfSwimmers(newNumOfSwimmers);
-//                        }
-//                    }
-
                     int[] modifiedActivity = processActivity(member.get(j).getBirthday());
                     member.get(j).setActivity(modifiedActivity);
                     System.out.println("debug line: chairman switch case: " + member.get(j).getActivity4());
@@ -204,6 +195,10 @@ public class Chairman implements Manager{
 
 
             System.out.println("debug line: chairman before storing file: " + member.get(j).getActivity4());
+
+            for(Member member : member){
+                System.out.println(member.getName() + member.getActivity4());
+            }
             Files.writeMemberToFile(member);
             TreasurerWork.modifyInfo(member.get(j));
             Files.modifyTrainingInfo(member.get(t));

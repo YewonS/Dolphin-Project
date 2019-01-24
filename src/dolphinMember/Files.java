@@ -39,7 +39,7 @@ public class Files {
             pw.write("name,age,registered class,type of membership,type of swimmer,purpose,swimming discipline,membership fee,tuition fee,coach\n");
             for (int i = 0; i < members.size(); i++) {
                 Member memberFile = members.get(i);
-                System.out.println("writing to member file"+memberFile.getActivity4());
+
                 sb.append(memberFile.getName() + ",");
                 sb.append(memberFile.getBirthday()+",");
                 sb.append(memberFile.getRegisteredClass()+",");
@@ -169,22 +169,6 @@ public class Files {
         }
     }
 
-    //reloading files
-
-//    public static void reloadMFile(String nameOfFile){
-//        String filename = nameOfFile.toLowerCase();
-//        switch(filename){
-//            case "member":
-//                reloadMemberFile();
-//                break;
-//            case "result":
-//                reloadRecordsFile();
-//                break;
-//            case "coach":
-//                reloadCoachFile();
-//                break;
-//        }
-//    }
 
     public static ArrayList<Member> reloadMemberFile(){
         try{
@@ -213,7 +197,7 @@ public class Files {
                 Coach coach1 = matchingCoach(coachName);
 
                 member.add(new Member(name, birthday, registeredClass, activity, membershipFee, tuitionFee, coach1));
-                System.out.println(activity[0]+", " + activity[1]+ " , " + activity[2]+ ", "+ activity[3]);
+
             }
         } catch(FileNotFoundException e){
             e.printStackTrace();

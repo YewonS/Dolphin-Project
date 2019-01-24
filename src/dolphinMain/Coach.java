@@ -2,7 +2,9 @@ package dolphinMain;
 
 import dolphinMember.Files;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Coach extends Authorized implements Manager {
 
@@ -76,7 +78,7 @@ public class Coach extends Authorized implements Manager {
     @Override
     public void selectedOption(int option) {
 
-        switch(option){
+        switch (option) {
             case 1:
                 viewResults();
                 MainScreen.userOption("coach");
@@ -88,6 +90,10 @@ public class Coach extends Authorized implements Manager {
             case 3:
                 logout();
                 break;
+            default:
+                System.out.println("Invalid input. Please try again.");
+                MainScreen.userOption("coach");
+
         }
     }
 

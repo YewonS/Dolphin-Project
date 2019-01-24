@@ -128,18 +128,16 @@ public class TreasurerWork {
                 for (Treasurer treasurer : treasurerMem) {
                     if (treasurer.getName().equals(name)) {
                         treasurer.setMembPaid(false);
+                        System.out.println("Membership payment of the member has successfully canceled.");
                     }
                 }
-
-                System.out.println("Membership payment of the member has successfully canceled.");
 
             } else if (option == 2) {
                 for (Treasurer treasurer1 : treasurerMem){
                     if (treasurer1.getName().equals(name)) {
                         treasurer1.setTuitPaid(false);
-                }
-
-                System.out.println("Tuition payment of the member has successfully canceled.");
+                        System.out.println("Tuition payment of the member has successfully canceled.");
+                    }
 
                 }
             } else {

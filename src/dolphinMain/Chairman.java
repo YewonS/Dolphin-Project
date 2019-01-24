@@ -160,7 +160,6 @@ public class Chairman implements Manager{
                 case 4:
                     int[] modifiedActivity = processActivity(member.get(j).getBirthday());
                     member.get(j).setActivity(modifiedActivity);
-                    System.out.println("debug line: chairman switch case: " + member.get(j).getActivity4());
                     System.out.println("The types of activity of the member has successfully modified.");
                     break;
 
@@ -193,12 +192,6 @@ public class Chairman implements Manager{
                     break;
             }
 
-
-            System.out.println("debug line: chairman before storing file: " + member.get(j).getActivity4());
-
-            for(Member member : member){
-                System.out.println(member.getName() + member.getActivity4());
-            }
             Files.writeMemberToFile(member);
             TreasurerWork.modifyInfo(member.get(j));
             Files.modifyTrainingInfo(member.get(t));

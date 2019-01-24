@@ -13,7 +13,7 @@ public class Files {
     static ArrayList<Treasurer> treasurer = new ArrayList<>();
     static ArrayList<TrainingRecords> trainingRecords = new ArrayList<>();
     static ArrayList<CompetitionRecords> competitionRecords = new ArrayList<>();
-    static int activity[] = new int[4];
+
 
     public static void createFile(){
         try {
@@ -196,6 +196,7 @@ public class Files {
 
             br.readLine();
             while ((line = br.readLine()) != null) {
+                int activity[] = new int[4];
 
                 String[] reloadFile = line.split(",");
 

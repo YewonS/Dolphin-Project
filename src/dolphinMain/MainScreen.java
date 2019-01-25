@@ -34,6 +34,7 @@ public class MainScreen {
         System.out.println("Please type in your username and password to log in.");
         System.out.println("Username: ");
         String username = sc.nextLine();
+        sc.nextLine();
         System.out.println("Password: ");
         String password = sc.nextLine();
 

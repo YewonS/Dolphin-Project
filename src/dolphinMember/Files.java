@@ -6,6 +6,11 @@ import java.lang.String;
 import java.io.*;
 import dolphinMain.*;
 
+/**
+ * Files class is for writing all the necessary information to the specific files
+ * and load the information from the file when the system is initially operated.
+ */
+
 public class Files {
 
     static ArrayList<Member> member = new ArrayList<>();

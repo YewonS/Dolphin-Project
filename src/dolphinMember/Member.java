@@ -3,6 +3,11 @@ package dolphinMember;
 import java.time.LocalDate;
 import dolphinMain.Coach;
 
+/**
+ * Member class is to instantiate the object Member.
+ * It makes sure that the object Member holds all the necessary information.
+ */
+
 public class Member {
 
     private String name;

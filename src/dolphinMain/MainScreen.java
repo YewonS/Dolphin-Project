@@ -2,6 +2,11 @@ package dolphinMain;
 
 import java.util.*;
 
+/**
+ * MainScreen class is for displaying main screen and options
+ * when the user logs in.
+ */
+
 public class MainScreen {
 
     static Scanner sc = new Scanner(System.in);

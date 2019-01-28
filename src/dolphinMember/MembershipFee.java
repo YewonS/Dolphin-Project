@@ -3,6 +3,11 @@ package dolphinMember;
 import java.time.LocalDate;
 import java.time.Period;
 
+/**
+ * MembershipFee class is for calculating fees
+ * for memberships and tuition.
+ */
+
 public class MembershipFee {
 
     static double annualMembershipFee;

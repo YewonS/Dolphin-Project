@@ -5,6 +5,12 @@ import dolphinMember.*;
 import java.time.LocalTime;
 import java.util.*;
 
+/**
+ * This class is for authorized person.
+ * The authorized person can view training records and competition records of the members,
+ * and also have access to the top 5 members in terms of their performances.
+ */
+
 public class Authorized {
 
     static Scanner sc = new Scanner(System.in);

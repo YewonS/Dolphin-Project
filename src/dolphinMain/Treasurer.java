@@ -1,9 +1,8 @@
 package dolphinMain;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import dolphinMember.*;
+/**
+ * Treasurer class is for instantiating the object Treasurer.
+ */
 
 public class Treasurer implements Manager {
 

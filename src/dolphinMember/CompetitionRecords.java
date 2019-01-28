@@ -2,6 +2,11 @@ package dolphinMember;
 
 import java.time.LocalTime;
 
+/**
+ * CompetitionRecords class is to instantiate the object Competition Records,
+ * so that it includes every necessary information.
+ */
+
 public class CompetitionRecords extends Records {
 
     public CompetitionRecords(String name, int discipline, String time, int competitionResult){

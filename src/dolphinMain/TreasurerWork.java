@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * TreasurerWork class includes all the necessary functions
+ * that treasurers should have.
+ */
+
 
 public class TreasurerWork {
 

@@ -8,6 +8,11 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import dolphinMember.*;
 
+/**
+ * Chairman class is for various activities that only chairman can do.
+ */
+
+
 public class Chairman implements Manager{
 
     static int i, j, t, c;

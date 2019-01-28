@@ -3,6 +3,11 @@ package dolphinMember;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Records class is for objectifying Records
+ * so that it contains all the necessary information regarding records.
+ */
+
 public class Records {
 
     String name;

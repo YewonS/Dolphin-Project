@@ -2,9 +2,12 @@ package dolphinMain;
 
 import dolphinMember.Files;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+
+/**
+ * Coach class is for instantiating object Coach.
+ * It also can check for the available coach when registering member in the system.
+ */
 
 public class Coach extends Authorized implements Manager {
 

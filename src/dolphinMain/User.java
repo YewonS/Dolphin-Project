@@ -1,5 +1,11 @@
 package dolphinMain;
 
+/**
+ * User class is for instantiating the object User,
+ * so that during the process of logging in,
+ * the system can use it to determine who the user is.
+ */
+
 public class User {
 
     String username;

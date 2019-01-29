@@ -18,6 +18,10 @@ public class TreasurerWork {
     static ArrayList<Member> members = Files.reloadMemberFile();
     static ArrayList<Treasurer> treasurerMem = Files.reloadTreasurerFile();
 
+    /**
+     * Loads the certain information from the members file such as the names, the membership fee and the tuition fee that the member has to pay,
+     * and store them in the treasurer file
+     */
     public static void loadInfo(){
         //get the names from the "member" arraylist and store them with the fees and boolean false values as default inside the treasureMem arraylist and then store them in the file.
 
@@ -40,6 +44,10 @@ public class TreasurerWork {
 
     }
 
+    /**
+     * Modifies certain information of a certain member
+     * @param memberToModify
+     */
     public static void modifyInfo(Member memberToModify){
         for(Treasurer treasurer : treasurerMem){
             if(treasurer.getName().equals(memberToModify.getName())){
@@ -52,6 +60,9 @@ public class TreasurerWork {
         Files.writeTreasurerFile(treasurerMem);
     }
 
+    /**
+     * Add membership fee and tuition fee payments
+     */
     public static void addPayments(){
         //reload member file and then get the name, membership fees, and tuition fees. store then in the treasureMem arraylist with the boolean value.
         //also, create treasurer file and store treasureMem arraylist there, in the File class.
@@ -115,6 +126,9 @@ public class TreasurerWork {
         }
     }
 
+    /**
+     * Cancels payments of a member
+     */
     public static void cancelPayment(){
         //get the arraylist and find the name, and then cancel it. Store the modified information.
         try {
@@ -156,6 +170,9 @@ public class TreasurerWork {
         Files.writeTreasurerFile(treasurerMem);
     }
 
+    /**
+     * Views members that are behind payment
+     */
     public static void viewBehindPayment(){
         //get the boolean value from the arraylist and then display them.
         try {
@@ -185,6 +202,9 @@ public class TreasurerWork {
         }
     }
 
+    /**
+     * Log out and go back log in screen
+     */
     public static void logout(){
         MainScreen.homeScreen();
     }

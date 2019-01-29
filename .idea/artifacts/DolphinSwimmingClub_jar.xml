@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DolphinSwimmingClub:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DolphinSwimmingClub_jar</output-path>
+    <root id="archive" name="Dolphin Swimming Club.jar">
+      <element id="module-output" name="Dolphin Swimming Club" />
+    </root>
+  </artifact>
+</component>

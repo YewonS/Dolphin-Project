@@ -11,6 +11,9 @@ public class MainScreen {
 
     static Scanner sc = new Scanner(System.in);
 
+    /**
+     * Displays the home screen
+     */
     public static void homeScreen(){
 
         System.out.println();
@@ -55,6 +58,11 @@ public class MainScreen {
 
     }
 
+    /**
+     * Checks if the user is registered in the system
+     * @param newUser the user who is logged in
+     * @return boolean value of whether the user is validated or not
+     */
     public static boolean validateUser(User newUser){
 
         String users[] = new String[] {"chairman", "treasurer", "coach"};
@@ -68,6 +76,10 @@ public class MainScreen {
         return false;
     }
 
+    /**
+     * Shows user options and calls for each correspondent methods
+     * @param loggedInUser the user who is logged in
+     */
     public static void userOption(String loggedInUser){
 
         int i;

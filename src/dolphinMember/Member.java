@@ -38,11 +38,6 @@ public class Member {
         this.coach = coach;
     }
 
-    /**
-     * getters and setters
-     * @return return value of the getters and setters
-     */
-
     public String getName() {
         return name;
     }

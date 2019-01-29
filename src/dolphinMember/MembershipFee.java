@@ -16,6 +16,11 @@ public class MembershipFee {
     static double passiveFee = 500;
     static double classTuitionFee;
 
+    /**
+     * Calculates membership fees
+     * @param member the member who needs to get the membership fees calculated
+     * @return the membership fee that the member needs to pay
+     */
     public static double calculateMembershipFee(Member member){
 
         int memberActivity[] = new int[3];
@@ -44,6 +49,11 @@ public class MembershipFee {
         return annualMembershipFee;
     }
 
+    /**
+     * Calculates tuition fees
+     * @param member the member who needs to get the tuition fees calculated
+     * @return the tuition fee that the member needs to pay
+     */
     public static double calculateTuitionFee(Member member){
 
         //calculate tuition fee for the registered classes

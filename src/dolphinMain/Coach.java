@@ -27,7 +27,6 @@ public class Coach extends Authorized implements Manager {
         this.numOfSwimmers = numOfSwimmers;
     }
 
-    //getters and setters
     public String getName() {
         return name;
     }
@@ -52,6 +51,10 @@ public class Coach extends Authorized implements Manager {
         this.numOfSwimmers = numOfSwimmers;
     }
 
+    /**
+     * Goes through the coaches and checks for the available coaches
+     * @param level the level that the coach is teaching
+     */
     public void availableCoach(String level){
 
         //reloading coaches from the file
@@ -78,6 +81,10 @@ public class Coach extends Authorized implements Manager {
 
     }
 
+    /**
+     * Calls options that the coach selected
+     * @param option the option that the coach chose
+     */
     @Override
     public void selectedOption(int option) {
 
@@ -96,10 +103,14 @@ public class Coach extends Authorized implements Manager {
             default:
                 System.out.println("Invalid input. Please try again.");
                 MainScreen.userOption("coach");
+                break;
 
         }
     }
 
+    /**
+     * Log out and go back to log in screen
+     */
     public void logout(){
         MainScreen.homeScreen();
     }

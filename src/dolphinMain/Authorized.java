@@ -29,6 +29,9 @@ public class Authorized {
         }
     }
 
+    /**
+     * Views the training records and competition records of the members
+     */
     public static void viewResults(){
         System.out.println();
         System.out.println("Choose which records to load: ");
@@ -57,6 +60,9 @@ public class Authorized {
         }
     }
 
+    /**
+     * Views top 5 members in terms of their competence in training and competition
+     */
     public void viewTop5(){
 
         try {

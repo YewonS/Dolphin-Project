@@ -64,6 +64,10 @@ public class Treasurer implements Manager {
         this.tuitPaid = tuitPaid;
     }
 
+    /**
+     * Calls for the corresponding methods
+     * @param option the option chosen by the treasurer
+     */
     @Override
     public void selectedOption(int option) {
 

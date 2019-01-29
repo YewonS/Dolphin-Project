@@ -20,6 +20,9 @@ public class Files {
     static ArrayList<CompetitionRecords> competitionRecords = new ArrayList<>();
 
 
+    /**
+     * Creates files
+     */
     public static void createFile(){
         try {
             new File("TrainingRecords.csv").createNewFile();
@@ -34,9 +37,12 @@ public class Files {
 
     //writing to files
 
+    /**
+     * Write all members into file and save them
+     * @param members the arraylist holding all the information of all members
+     */
     public static void writeMemberToFile(ArrayList<Member> members){
 
-        //todo: find a way to align the information in order: active, junior, elite - active, junior, exercise - active, senior, elite - active, senior, exercise - passive.
         try{
             PrintWriter pw = new PrintWriter(new File("Members.csv"));
             StringBuilder sb = new StringBuilder();
@@ -66,8 +72,11 @@ public class Files {
         }
     }
 
+    /**
+     * Writes all coaches into file and save them
+     * @param coaches the arraylist holding all the information of all coaches
+     */
     public static void writeCoachToFile(ArrayList<Coach> coaches){
-        //todo: align the coaches, junior first and then senior
 
         try{
             PrintWriter pw = new PrintWriter(new File("Coach.csv"));
@@ -91,8 +100,12 @@ public class Files {
         }
     }
 
+    /**
+     * Writes all treasurers into file and save them
+     * @param treasurers the arraylist holding all the information of all treasurers
+     */
     public static void writeTreasurerFile(ArrayList<Treasurer> treasurers){
-        //todo: align the information in the following order: both fees paid first, one fee paid, and then no fees paid.
+
         PrintWriter pw;
         try {
             pw = new PrintWriter(new File("Treasurer.csv"));
@@ -119,9 +132,11 @@ public class Files {
         }
     }
 
+    /**
+     * Writes all training records of all members into file and save them
+     * @param trainingRecords the arraylist holding all the information of all training records
+     */
     public static void writeTrainingRecordsToFile(ArrayList<TrainingRecords> trainingRecords){
-
-        //todo: align the information in the following order: junior, higher result first and then senior, higher results.
 
         PrintWriter pw;
         try {
@@ -148,6 +163,10 @@ public class Files {
         }
     }
 
+    /**
+     * Writes all competition records of all members into file and save them
+     * @param competitionRecords the arraylist holding all the information of all competition records
+     */
     public static void writeCompetitionRecordsToFile(ArrayList<CompetitionRecords> competitionRecords){
         PrintWriter pw;
         try {
@@ -174,7 +193,10 @@ public class Files {
         }
     }
 
-
+    /**
+     * Reloads all the data from member file and store them in the arraylist
+     * @return the arraylist holding all members loaded from the file
+     */
     public static ArrayList<Member> reloadMemberFile(){
         try{
             member.clear();
@@ -213,6 +235,10 @@ public class Files {
         return member;
     }
 
+    /**
+     * Reloads all the data from coach file and store them in the arraylist
+     * @return the arraylist holding all coaches loaded from the file
+     */
     public static ArrayList<Coach> reloadCoachFile(){
         try{
             coach.clear();
@@ -237,6 +263,10 @@ public class Files {
         return coach;
     }
 
+    /**
+     * Reloads all the data from treasurer file and store them in the arraylist
+     * @return the arraylist holding all treasurers loaded from the file
+     */
     public static ArrayList<Treasurer> reloadTreasurerFile(){
         try{
             treasurer.clear();
@@ -261,6 +291,10 @@ public class Files {
         return treasurer;
     }
 
+    /**
+     * Reloads all the data from training records file and store them in the arraylist
+     * @return the arraylist holding all training records loaded from the file
+     */
     public static ArrayList<TrainingRecords> reloadTrainingRecordsFile(){
         try{
             trainingRecords.clear();
@@ -285,6 +319,10 @@ public class Files {
         return trainingRecords;
     }
 
+    /**
+     * Reloads all the data from competition records file and store them in the arraylist
+     * @return the arraylist holding all competitoin records loaded from the file
+     */
     public static ArrayList<CompetitionRecords> reloadCompetitionRecordsFile(){
         try{
             competitionRecords.clear();
@@ -309,6 +347,11 @@ public class Files {
         return competitionRecords;
     }
 
+    /**
+     * Loads certain information from the members such as names,
+     * and store them into the training records file
+     * @param trRecords the arraylist holding the default values as training records
+     */
     public static void loadTrainingInfo(ArrayList<TrainingRecords> trRecords){
         //get the names from the "member" arraylist and store them with default values inside the trainingRecords arraylist and then store them in the file.
         int i;
@@ -334,6 +377,10 @@ public class Files {
         //System.out.println("Training records saved to file.");
     }
 
+    /**
+     * Modifies training records of a specific member
+     * @param memberToModify the member to modify
+     */
     public static void modifyTrainingInfo(Member memberToModify){
         for(TrainingRecords trRecord : trainingRecords){
             if(trRecord.getName().equals(memberToModify.getName())){
@@ -347,6 +394,10 @@ public class Files {
         Files.writeTrainingRecordsToFile(trainingRecords);
     }
 
+    /**
+     * Modifies competition records of a specific member
+     * @param memberToModify the member to modify
+     */
     public static void modifyCompetitionInfo(Member memberToModify){
         for(CompetitionRecords comRecord : competitionRecords){
             if(comRecord.getName().equals(memberToModify.getName())){
@@ -359,6 +410,11 @@ public class Files {
         Files.writeCompetitionRecordsToFile(competitionRecords);
     }
 
+    /**
+     * Loads certain information from the members such as names,
+     * and store them in the competition records file
+     * @param compRecords
+     */
     public static void loadCompetitionInfo(ArrayList<CompetitionRecords> compRecords){
         //get the names from the "member" arraylist and store them with the fees and boolean false values as default inside the treasureMem arraylist and then store them in the file.
 
@@ -381,6 +437,11 @@ public class Files {
         Files.writeCompetitionRecordsToFile(competitionRecords);
     }
 
+    /**
+     * Finding the matching coach
+     * @param coachName the name of the coach
+     * @return the matching coach
+     */
     public static Coach matchingCoach(String coachName){
 
         Coach matchingCoach = new Coach();

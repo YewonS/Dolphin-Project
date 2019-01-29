@@ -27,6 +27,10 @@ public class Chairman implements Manager{
     public Chairman(){
     }
 
+    /**
+     * Calls method that corresponds the chosen option
+     * @param option the option that the chairman chose
+     */
     @Override
     public void selectedOption(int option) {
 
@@ -58,9 +62,16 @@ public class Chairman implements Manager{
             case 7:
                 logout();
                 break;
+            default:
+                System.out.println("Invalid input. Please try again.");
+                MainScreen.userOption("chairman");
+                break;
         }
     }
 
+    /**
+     * Adds new member with the relevant information
+     */
     public void addNewMember(){
 
         try {
@@ -94,6 +105,9 @@ public class Chairman implements Manager{
     }
 
 
+    /**
+     * Modifies certain information of a specific member
+     */
     public void modifyMember(){
 
         System.out.println();
@@ -213,6 +227,9 @@ public class Chairman implements Manager{
 
     }
 
+    /**
+     * Deletes members from the system
+     */
     public void deleteMember(){
         try {
 
@@ -251,6 +268,9 @@ public class Chairman implements Manager{
         }
     }
 
+    /**
+     * Add new coach with the relevant information
+     */
     public void addNewCoach(){
 
         try {
@@ -280,6 +300,9 @@ public class Chairman implements Manager{
 
     }
 
+    /**
+     * Modify certain information of a specific coach
+     */
     public void modifyCoach(){
 
         try {
@@ -334,6 +357,9 @@ public class Chairman implements Manager{
         }
     }
 
+    /**
+     * Deletes specific coach off the system
+     */
     public void deleteCoach(){
 
         try {
@@ -362,10 +388,19 @@ public class Chairman implements Manager{
         }
     }
 
+    /**
+     * Log out and go back to log in screen
+     */
     public void logout(){
         MainScreen.homeScreen();
     }
 
+    /**
+     * Process activities including the types of membership, purpose of swimming, assigning coach, and keeping records of swimming disciplines
+     *
+     * @param birthday birthday of the certain member, which is to be used for calculating the age
+     * @return arrays holding all the necessary information regarding the activities of a member
+     */
     public int[] processActivity(LocalDate birthday){
 
         int[] activity = new int[4];
@@ -432,6 +467,11 @@ public class Chairman implements Manager{
         return activity;
     }
 
+    /**
+     * Calculates the total number of members that a coach is supervising
+     * (One coach cannot coach more than 5 members so the system calculates automatically and keep the records.)
+     * @return the arraylist holding all the necessary information regarding coaches
+     */
     public ArrayList<Coach> changeNumOfSwimmers(){
         //hashmap
         //get the names, count, and then save it, instead of all the +1, -1 thingy
